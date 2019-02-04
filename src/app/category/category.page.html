@@ -1,0 +1,23 @@
+<ion-content padding>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Categories
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    
+    <!-- Item as a Button -->
+    <ion-item (click)="onclickcat(item)" *ngFor="let item of catarr">
+      <ion-label>
+        {{item.cat_name}}
+      </ion-label>
+    </ion-item>
+  </ion-content>
+  
+</ion-content>

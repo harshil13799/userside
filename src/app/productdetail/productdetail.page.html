@@ -1,0 +1,21 @@
+<ion-header>
+    
+  <ion-toolbar>
+    <ion-title>
+      <button (click)="onclickback()"><ion-icon name="ios-arrow-back"></ion-icon></button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;product Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card *ngFor="let item of prodarr">
+        <ion-img src="http://localhost:3000/images/product/{{item.p_img}}" style="border-radius:50px;"></ion-img>
+        <ion-card-header>
+            <ion-card-title>{{item.p_name}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <h3>Rs. {{item.p_price}}</h3>
+            <h5>Manufacturer:- {{item.p_mfg}}</h5>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
