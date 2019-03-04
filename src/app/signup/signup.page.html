@@ -1,0 +1,108 @@
+<div class="container-login100" style="background-image: url(http://localhost:3000/images/product/back3.jpg);height:100%;width:100%;background-repeat:no-repeat;background-size:cover ">
+<div class="container">
+    <div class="row">
+      <div class="col-md-9">
+          <!-- style="font-size: 30px;margin-left:10px;margin-top:-40px;" -->
+        <p><b>Signup</b></p>
+      </div>
+      <div class="col-md-3">
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+      </div>
+    </div>
+  </div>
+  
+  <form class="example-form container" (ngSubmit)="addForm(f)" #f="ngForm">
+      <div class="container">
+          <div class="form-group">  
+          Email Id
+          <mat-form-field class="example-full-width">
+          <input matInput placeholder="Enter Email_id" id="email_id" required
+          name="user_id"
+          #emailid="ngModel" [(ngModel)]="email_id" name="email_id">
+          </mat-form-field>
+          <div [hidden]="emailid.valid || emailid.untouched">
+              <div [hidden]="!emailid?.errors?.required"></div>
+              <mat-error>Email-Id is required*</mat-error>
+          </div>
+          <br>
+          Password
+          <mat-form-field class="example-full-width" >
+          <input matInput placeholder="Enter Password" id="password" required
+          name="p_price" type="password"
+          #pass="ngModel" [(ngModel)]="password" name="password">
+          </mat-form-field>
+          <div [hidden]="pass.valid || pass.untouched">
+              <div [hidden]="!pass?.errors?.required"></div>
+              <mat-error>Password is required*</mat-error>
+          </div>
+          <br>
+          Name
+         <mat-form-field class="example-full-width" >
+         <input matInput placeholder="Enter Your Name"
+         id="u_name" required
+         name="u_name"
+         #uname="ngModel" [(ngModel)]="u_name" name="u_name">
+          </mat-form-field>
+          <div [hidden]="uname.valid || uname.untouched">
+              <div [hidden]="!uname?.errors?.required"></div>
+              <mat-error>Please Enter Name*</mat-error>
+          </div>
+        <br>
+        Gender
+        <mat-radio-group class="example-radio-group" name="u_gender" [(ngModel)]="u_gender" value="male">
+          <mat-radio-button class="example-radio-button" *ngFor="let item of gender_arr" [value]="item" [checked]="gender_arr">
+            {{item}}
+          </mat-radio-button>
+        </mat-radio-group>
+       <br>
+       Address
+       <mat-form-field class="example-full-width">
+       <input matInput placeholder="Enter Your Address"
+       id="u_address" required
+       name="u_address"
+       #uaddress="ngModel" [(ngModel)]="u_address" name="u_address">
+        </mat-form-field>
+        <div [hidden]="uaddress.valid || uaddress.untouched">
+            <div [hidden]="!uaddress?.errors?.required"></div>
+            <mat-error>Please Enter Address*</mat-error>
+        </div>
+      <br>
+      City
+        <mat-form-field class="example-full-width" >
+        <mat-select placeholder="select City" [(ngModel)]="u_city" name="u_city"
+        id="u_city" required
+        name="u_city"
+        #ucity="ngModel">
+            <mat-option *ngFor="let item of cityarr" [value]="item">{{item}}</mat-option>
+        </mat-select>
+        </mat-form-field>
+        <div [hidden]="ucity.valid || ucity.untouched">
+            <div [hidden]="!ucity?.errors?.required"></div>
+            <mat-error>Please Select City*</mat-error>
+        </div>
+  
+        <br>
+        Mobile No.
+        <mat-form-field class="example-full-width" >
+        <input matInput placeholder="Enter Mobile No." [(ngModel)]="u_mno" name="u_mno"
+        id="u_mno" required
+        name="u_mno"
+        #umno="ngModel">
+        </mat-form-field>
+        <div [hidden]="umno.valid || umno.untouched">
+            <div [hidden]="!umno?.errors?.required"></div>
+            <mat-error>Enter Mobile Number*</mat-error>
+        </div>
+        <br>
+        <ion-button [disabled]="!f.valid" (click)="onsignup()" expand="full">SignUp</ion-button>
+        <!-- <button mat-raised-button color="primary" [disabled]="!f.valid" (click)="onsignup()"><mat-icon>add</mat-icon>Signup</button> -->
+        <ion-button expand="full" color="danger" (click)="oncancel()">Cancel</ion-button>
+        <!-- <button mat-raised-button class="btn"  color="warn" (click)="oncancel()">Cancel</button> -->
+        </div>
+      </div>
+  </form>
+  </div>

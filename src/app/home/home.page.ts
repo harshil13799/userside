@@ -9,7 +9,7 @@ import { Router,ActivatedRoute } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 
-export class HomePage implements OnInit {
+export class HomePage {
   //@ViewChild(Slides) slides: Slides;
 
   p_id:number;

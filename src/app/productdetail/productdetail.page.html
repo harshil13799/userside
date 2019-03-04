@@ -16,6 +16,14 @@
         <ion-card-content>
             <h3>Rs. {{item.p_price}}</h3>
             <h5>Manufacturer:- {{item.p_mfg}}</h5>
+            <mat-form-field>
+                <mat-select [(ngModel)]="qty" name="qty" placeholder="Choose Quantity">
+                  <mat-option *ngFor="let item1 of qtyarr" [value]="item1.value">
+                    {{item1.viewValue}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <ion-button (click)="onclickaddtocart(item)" style="margin-left:85px;margin-top:-10px;">Add to cart</ion-button>
         </ion-card-content>
     </ion-card>
 </ion-content>

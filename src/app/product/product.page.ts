@@ -27,6 +27,14 @@ export class ProductPage implements OnInit {
   {
     this._route.navigate(['/productdetail',item.p_id]);
   }
+  onclickadd(item)
+  {
+   this._route.navigate(['/productdetail',item.p_id]);
+  }
+  onclickcart()
+  {
+    this._route.navigate(['/cart']);
+  }
   ngOnInit() {
     this._proser.getAllproduct().subscribe(
       (data:any)=>{

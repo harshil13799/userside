@@ -7,9 +7,10 @@ import { HttpModule,Http } from '@angular/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { MatFormFieldModule,MatFormFieldControl,MatInputModule,MatSelectModule,MatIconModule,MatRadioModule,MatOptionModule,MatTableModule,MatPaginatorModule,MatSortModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -20,7 +21,17 @@ import { AppRoutingModule } from './app-routing.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatIconModule,
+    MatRadioModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    BrowserAnimationsModule
   ],
   providers: [
     StatusBar,
