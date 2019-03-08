@@ -4,12 +4,8 @@
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
     <ion-title>Cart</ion-title>
-  </ion-toolbar>
-  
+  </ion-toolbar>  
 </ion-header>
-<ion-toolbar>
-  <ion-button expand="full" color="danger" (click)="oncheckout()">CHECKOUT</ion-button>
-  </ion-toolbar>
 <ion-content padding>
     <ion-list *ngFor="let item of cartarr,let i=index" >
         <ion-item >
@@ -29,4 +25,13 @@
           </ion-label>
         </ion-item>
       </ion-list>
+      <div>
+          <img [hidden]="flag1" src="http://localhost:3000/images/product/sad.jpg" >
+      <ion-button [hidden]="flag1" (click)="onclickstart()" shape="round" style="margin-left:30px;">Start Shopping</ion-button>
+      </div>
 </ion-content>
+
+
+<ion-footer style="background-color:white;">
+  <ion-button expand="full" [hidden]="flag" color="danger" (click)="oncheckout()">CHECKOUT</ion-button>
+</ion-footer>

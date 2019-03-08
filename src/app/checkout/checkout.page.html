@@ -8,30 +8,57 @@
 
 <ion-content padding>
 
-    <div>
+    <!-- <div>
     <h1>Order details</h1>
-    <table border-radius="3px" >
+    <table border=2 >
       <th>Image</th>
       <th>name</th>
       <th>price</th>
       <th>total</th>
-      &nbsp;
       <tr *ngFor="let item of cart_arr,let i=index">
           <td><img src="http://localhost:3000/images/product/{{item.fk_p_img}}" alt="no image" height="50px" width="50px"></td>
         <td>{{item.fk_p_name}}</td>
         <td>{{item.c_price}}</td>
-        <td></td>
         <td>{{tot[i]}}</td>
-        <td>
-          <span class="glyphicon glyphicon-trash" aria-hidden="true" (click)="ondelete(item,i)"></span>
-        </td><hr>
       </tr>
-      <tr>
-        <td>{{total}}</td>
-      </tr>
-    </table>
-    <button *ngIf="cartpro_arr.length>0" (click)="oncheck()" class="btn btn-primary">CheckOut</button>
-  </div>
+    </table> -->
+
+    <ion-list *ngFor="let item of cart_arr,let i=index" (click)="onclickpro(item)" >
+      <ion-item>
+        <ion-avatar slot="start">
+            <img src="http://localhost:3000/images/product/{{item.fk_p_img}}" style="height:50px;width:60px;">
+        </ion-avatar>
+        <ion-label>{{item.fk_p_name}}</ion-label>
+          <ion-badge slot="end" color="unread">Rs.{{item.c_price}}</ion-badge>
+      </ion-item>
+    </ion-list>
+
+
+    <ion-item>
+      <ion-label>Total Value</ion-label>
+      <ion-badge slot="end" color="unread">Rs.{{total1}}</ion-badge>
+    </ion-item> 
+    <ion-item>
+      <ion-label> +Tax(18%) </ion-label>
+      <ion-badge slot="end" color="unread">Rs.{{totalpayble}}</ion-badge>
+    </ion-item> 
+    <ion-item>
+      <ion-label>Total Payble Amount </ion-label>
+      <ion-badge slot="end" color="unread">Rs.{{total}}</ion-badge>
+    </ion-item> 
+    <br>
+    <ion-item>
+      <ion-note slot="start" color="primary">Choose option for payment</ion-note>
+    </ion-item>
+    <input type="radio" (click)="onclickcash()" name="rdn1" [(ngModel)]="rdn1" value="cash on delivery"> Cash on Delivery
+    <br>
+    <input type="radio" name="rdn1" (click)="onclickpaytm()" [(ngModel)]="rdn1" value="Use Paytm for Payment"> Use Paytm for Payment
+  <!-- </div> -->
+
 </ion-content> 
+<ion-footer>
+  <ion-button [hidden]="flag1" (click)="onplaceorder()" expand="full">Place Order</ion-button>
+  <ion-button [hidden]="flag" (click)="onmakepayment()" expand="full">Make Payments</ion-button>
+</ion-footer>
 
 

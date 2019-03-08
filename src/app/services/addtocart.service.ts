@@ -10,6 +10,7 @@ import { cart_class } from '../Classes/cart';
 })
 export class AddtocartService {
   private cart:string='http://Localhost:3000/cart/';
+  private deleteallcart:string='http://Localhost:3000/deleteallcart/';
   constructor(private _http:HttpClient) { }
   getAllcart(){
     return this._http.get(this.cart);
@@ -37,5 +38,10 @@ export class AddtocartService {
     let body=JSON.stringify(item)
     let head1=new HttpHeaders().set('Content-Type','application/json');
     return this._http.put(this.cart,body,{headers:head1})
+  }
+  deleteAllcart(item){
+    console.log(item);
+    let head1=new HttpHeaders().set('Content-Type','application/json');
+    return this._http.post(this.deleteallcart,item)
   }
 }

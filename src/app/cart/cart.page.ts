@@ -23,6 +23,8 @@ tot1:number[]=[];
 i:number=0;
 user_id:string;
 c_price:number;
+flag:boolean=true;
+flag1:boolean=true;
   constructor(private _actroute:ActivatedRoute,private _route:Router,private _cartser:AddtocartService) { }
 oncheckout(){
   this._route.navigate(['/checkout']);
@@ -34,6 +36,10 @@ onclickdelete(item){
       this.ngOnInit();
     }
   );
+}
+onclickstart()
+{
+  this._route.navigate(['/home']);
 }
  onchange(item,i){
        this.total=0;
@@ -47,12 +53,26 @@ onclickdelete(item){
 this._cartser.updatecart(new changeqty(this.tot[i],this.qty[i],item.c_id)).subscribe(
   (data:any)=>{
   }
-)
+);
  }
+ 
   ngOnInit() {
+    
     this.user_id=localStorage.getItem('email_id');
     this._cartser.getAllcartById(this.user_id).subscribe(
       (data:any)=>{
+        if(data.length!=0)
+        {
+          this.flag=false;
+          console.log(this.flag,"11");
+          this.flag1=true;
+        }
+        if(data.length==0)
+        {
+          this.flag=true;
+          console.log(this.flag,"new");
+          this.flag1=false;
+        }
         for(this.i=0;this.i<data.length;this.i++)
         {
           this.tot[this.i]=data[this.i].c_price;
@@ -65,9 +85,11 @@ this._cartser.updatecart(new changeqty(this.tot[i],this.qty[i],item.c_id)).subsc
         for(this.i=0;this.i<=data.length;this.i++){
           this.qty.push(1);
         }
+
+        
       }
     );
-    
+    console.log(this.flag);  
   }
-
+  
 }

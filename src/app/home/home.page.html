@@ -23,6 +23,14 @@
       </ion-slide>
     </ion-slides>
   </div>
+  <ion-card>
+      
+        <ion-card-content *ngFor="let item of prodarr">
+            <img src="http://localhost:3000/images/product/{{item.p_img}}">
+        </ion-card-content>
+      
+    </ion-card>
+
 </ion-content>
 <!-- <ion-card>
     <ion-card-header>
