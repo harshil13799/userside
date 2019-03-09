@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title>Filter<ion-icon (click)="onclickcart()" style="margin-left:130px;margin-top:15px;" name="cart"></ion-icon></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <p>Choose Range</p>
+  <ion-item>
+    <ion-range min="100" max="200" color="secondary">
+      <ion-label slot="start">100</ion-label>
+      <ion-label slot="end">200</ion-label>
+    </ion-range>
+  </ion-item>
+
+<p>Choose Category:-</p>
+  <ion-item>
+      <ion-label>Category</ion-label>
+      <ion-select multiple="false">
+        <ion-select-option value="vegetable" selected>vegetables</ion-select-option>
+        <ion-select-option value="grocery">grocery</ion-select-option>
+        <ion-select-option value="fruites" selected>Fruites</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    
+</ion-content>
+
+<ion-footer style="background-color:white;">
+    <ion-button expand="full" shape="round">Apply Filter</ion-button>
+  </ion-footer>
+  

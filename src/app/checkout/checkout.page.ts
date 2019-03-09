@@ -4,7 +4,14 @@ import { cart_class } from '../classes/cart';
 import { product_class } from '../classes/product';
 import { OrderService } from '../services/order.service';
 import { Router } from '@angular/router';
+import { order_class } from '../Classes/order';
+import { orderdetail_class } from '../Classes/orderdetail';
+import { proupdate_class } from '../Classes/productupdate';
+import { ProductService } from '../services/product.service';
 
+export class productup{
+  constructor(public p_id:number,public p_qty){}
+}
 
 export interface qtyarr{
   value:string;
@@ -26,6 +33,7 @@ export class CheckoutPage implements OnInit {
   qty:number[]=[];
   price:number[]=[];
   i:number;
+  j:number;
   tot:number[]=[];
   //product_arr:product[]=[];
   fk_p_id:number;
@@ -38,65 +46,112 @@ export class CheckoutPage implements OnInit {
   fk_email_id:string;
   c_id:number;
   c_price:number;
+  p_qty:number;
   c_qty:number;
+  cnt:number=0;
   date1:Date=new Date();
   x:number;
+  rdn1:string;
+  flag:boolean=true;
+  flag1:boolean=true;
   prodarr:product_class[]=[];
     cartpro_arr:cart_class[]=[];
+    newqty:number[]=[];
+    newqt:number[]=[];
+    newqty1:number[]=[];
     total:number=0;
-
-    constructor(private _route:Router,private _order:OrderService,private _addcart:AddtocartService) { }
+    total1:number=0;
+    totalpayble:number=0;
+    arr1:orderdetail_class[]=[];
+    constructor(private _route:Router,private _order:OrderService,private _addcart:AddtocartService,private _proser:ProductService) { }
     onclickback(){
       this._route.navigate(['product']);
     }
-    oncheck(){
-      
-        }
-        onchange(item,i){
-      this.total=0;
-          this.tot[i]=item.p_price*this.qty[i];
-          for(let i=0;i<this.tot.length;i++)
-          {
-            this.total+=this.tot[i];
-          }
-          }
-        ondelete(item,i){
-          this.total=this.total-this.tot[i];
-          this.tot.splice(i,1);
-          this.price.splice(i,1);
-          this.qty.splice(i,1);
-          this.cartpro_arr.splice(this.cartpro_arr.indexOf(item),1);
-          this._addcart.deletecartByID(item.c_id).subscribe(
-            (data:any)=>{
-              this.cart_arr.splice(this.cart_arr.indexOf(item),1);
+    
+    onplaceorder(){
+        this.user_id=localStorage.getItem('email_id');
+        this._order.addorder(new order_class(this.total,this.user_id)).subscribe(
+          (data:any)=>{
+            console.log(data);
+            for(this.i=0;this.i<this.cart_arr.length;this.i++)
+            {
+                this.arr1.push(new orderdetail_class(data.insertId,this.cart_arr[this.i].fk_p_id,this.cart_arr[this.i].c_qty,this.cart_arr[this.i].qty,this.cart_arr[this.i].fk_p_price))
+                this.newqty.push(this.cart_arr[this.i].c_qty*this.cart_arr[this.i].qty);
+                //console.log(this.newqty[this.i]);
+                this.newqty[this.i]=this.newqty[this.i]/1000;
+                //console.log(this.newqty[this.i]);
+                this._proser.getAllproById(this.cart_arr[this.i].fk_p_id).subscribe(
+                  (data:product_class[])=>{
+                   console.log(data);
+                    this.prodarr=data;
+                    for(this.i=0;this.i<this.prodarr.length;this.i++)
+                    {
+                  
+                      this.newqty1.push(this.prodarr[this.i].p_qty-this.newqty[this.i]);
+                      this.cnt++;
+                      
+                      console.log(this.newqty1);
+                      for(this.i=0;this.i<this.cnt;this.i++)
+                      {
+                        this._proser.updateprowithoutimg(new productup(this.cart_arr[this.i].fk_p_id,this.newqty1[this.i])).subscribe(
+                          (data:any)=>{
+                              console.log(data);
+                           }
+                        );
+                      }    
+                    }
+                    console.log(this.cnt,"cnt");      
+                      
+                    }
+                    
+                );
+                
+                console.log(this.newqty1);
+                console.log(this.newqty1[this.i],"newqyyy");
+                
             }
-          );
-      
-      
-        }
-      
+            for(this.i=0;this.i<this.newqty1.length;this.i++)
+            {
+              console.log(this.newqty1[this.i]);
+            }
+            this._order.addorderDetails(this.arr1).subscribe(
+              (data:any)=>{
+                console.log(data);
+              }
+            );
+          }
+        );
+        console.log(this.cart_arr,"hello")
+        this._addcart.deleteAllcart(this.cart_arr).subscribe(
+          (data:any)=>
+          {
+            console.log(data);
+          }
+        );
+        
+    }
+    onmakepayment(){
+      this._route.navigate['paytmpayment'];
+    }
+    onclickcash(){
+      this.flag=true;
+      this.flag1=false;
+    }
+    onclickpaytm(){
+      this.flag1=true;
+      this.flag=false;
+    }
   ngOnInit() {
-
     this.user_id=localStorage.getItem('email_id');
     this._addcart.getAllcartById(this.user_id).subscribe(
     (data:cart_class[])=>{
       this.cart_arr=data;
-  
       console.log(this.cart_arr);
       for(this.i=0;this.i<=data.length;this.i++){
         this.qty.push(1);
       }
-      
     }
-    
   );
-  
-  /*this._addcart.getAllcart().subscribe(
-    (data:cart_class[])=>{
-      this.cart_arr=data;
-      this.fk_email_id=data[0].fk_email_id;
-      console.log(this.cart_arr);
-      console.log(this.fk_user_id);*/
       this.user_id=localStorage.getItem('email_id');
       this._addcart.getAllcartById(this.user_id).subscribe(
         (data:cart_class[])=>{
@@ -106,29 +161,19 @@ export class CheckoutPage implements OnInit {
           this.fk_p_img=data[0].fk_p_img;
           this.fk_p_price=data[0].c_price;
           this.c_price=data[0].c_price;
-  
+          
           for(this.i=0;this.i<data.length;this.i++){
               this.tot.push(data[this.i].c_price);
              this.total+=data[this.i].c_price;
             }
-  
+            this.total1=this.total;
+            this.totalpayble=this.total*0.18;
+            console.log(this.totalpayble);
+            this.total=this.total+this.totalpayble;
+            console.log(this.total);
         }
       );
-   // }
-  //);
-  
-  // this._product.getAllProduct().subscribe(
-  //   (data:product[])=>{
-  //     this.product_arr=data;
-  //     console.log(data);
-  
-  //   }
-  // );
-  
-
-
-
-
+      
   }
 
 }

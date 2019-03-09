@@ -10,6 +10,15 @@
         <ion-list>
 
           <ion-menu-toggle auto-hide="false">
+            <ion-item [routerDirection]="'root'"  routerLink="/login">
+              <ion-icon slot="start" name="ios-home"></ion-icon>
+              <ion-label>
+                Login
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false">
             <ion-item [routerDirection]="'root'" routerLink="/home">
               <ion-icon slot="start" name="ios-home"></ion-icon>
               <ion-label>
@@ -55,7 +64,7 @@
           </ion-menu-toggle>
 
           <ion-menu-toggle auto-hide="false">
-            <ion-item [routerDirection]="'root'" routerLink="">
+            <ion-item [routerDirection]="'root'"  routerLink="">
               <ion-icon slot="start" [name]="logout"></ion-icon>
               <ion-label>
                 Logout

@@ -28,9 +28,12 @@ export class ProductdetailPage implements OnInit {
   user_id:string;
   prodarr:product_class[]=[];
   addcart:cart_class[]=[];
+  cartarr:cart_class[]=[];
   qty:number;
   price:number;
+  checkid:number;
   i:number;
+  j:number;
   qtyarr:qty[]=[
     {value:"500",viewValue:"500 gm."},
     {value:"1000",viewValue:"1 Kg"},
@@ -44,6 +47,25 @@ export class ProductdetailPage implements OnInit {
   }
   onclickaddtocart(item)
   {
+    console.log(item);
+    if(this.qty==null)
+    {
+        alert("plz choose qty")
+    }
+    else
+    {
+      this._addser.getAllcart().subscribe(
+        (data:any[])=>{
+          this.cartarr=data;
+          console.log(this.cartarr);
+        }
+      );
+      if(this.cartarr.find(x=>x.fk_p_id==item.p_id))
+      {
+        alert("Already in cart")
+      }
+      else
+      {
       console.log(this.qty);
       for(this.i=0;this.i<this.prodarr.length;this.i++)
       {
@@ -56,8 +78,8 @@ export class ProductdetailPage implements OnInit {
         this.p_img=this.prodarr[this.i].p_img;
         console.log(this.price);
       }
-      this.user_id=localStorage.getItem('email_id');
-      this._addser.addcart(new cart_class(this.user_id,this.price,this.p_id,this.p_name,this.qty,this.p_img,this.p_mfg,this.fk_cat_id,this.p_price)).subscribe(
+        this.user_id=localStorage.getItem('email_id');
+        this._addser.addcart(new cart_class(this.user_id,this.price,this.p_id,this.p_name,this.qty,this.p_img,this.p_mfg,this.fk_cat_id,this.p_price)).subscribe(
         (data:any)=>
         {
           this.addcart.push(new cart_class(this.user_id,this.price,this.p_id,this.p_name,this.qty,this.p_img,this.p_mfg,this.fk_cat_id,this.p_price));
@@ -67,6 +89,8 @@ export class ProductdetailPage implements OnInit {
           this._route.navigate(['/product']);
         }
       );
+    }
+    }
   }
   ngOnInit() {
     this.x=this._acroute.snapshot.params['p_id'];

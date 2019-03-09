@@ -26,7 +26,8 @@ const routes: Routes = [
   { path: 'editprofile/:email_id', loadChildren: './editprofile/editprofile.module#EditprofilePageModule' },
   { path: 'editpassword/:email_id', loadChildren: './editpassword/editpassword.module#EditpasswordPageModule' },
   { path: 'cart', loadChildren: './cart/cart.module#CartPageModule' },
-  { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutPageModule' }
+  { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutPageModule' },
+  { path: 'filterpage', loadChildren: './filterpage/filterpage.module#FilterpagePageModule' }
 ];
 
 @NgModule({
