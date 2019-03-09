@@ -27,9 +27,15 @@ export class HomePage {
   
   constructor(private _actroute:ActivatedRoute,private _route:Router,private _proser:ProductService) { }
   forslider ={
-    spaceBetween:5,
+    //spaceBetween:5,
+    //centeredSlides:true,
+    //slidesPerView:1.3
+  }
+  sliderConfig={
+    spaceBetween:10,
     centeredSlides:true,
     slidesPerView:1.3
+
   }
   // ionViewDidLoad(){
   //   setTimeout(()=>

@@ -31,3 +31,30 @@
       </ion-card-content>
     </ion-card-header>
   </ion-card> -->
+  <ion-content>
+    <div> 
+      <ion-row no-paddding class="category-banner">
+        <ion-col text-left button tappable (click)="proarr.expanded = !proarr.expanded" align-self-center>
+          <!-- {{proarr}} -->
+        </ion-col>
+      </ion-row>
+<ion-slides [options]="sliderConfig">
+  <ion-slide *ngFor="let item of proarr">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title> 
+          {{item.p_name}} - Rs.{{item.p_price}}
+        </ion-card-title>
+        <ion-card-content>
+          <img src="http://localhost:3000/images/product/{{item.p_img}}">
+          <!-- <ion-button expand="full" (click)="oncart()">ADD to cart</ion-button> -->
+        </ion-card-content>
+      </ion-card-header>
+    </ion-card>
+  </ion-slide>
+</ion-slides>
+    </div>
+  </ion-content>
+  
+
+  
