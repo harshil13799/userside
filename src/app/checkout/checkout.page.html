@@ -39,7 +39,7 @@
       <ion-badge slot="end" color="unread">Rs.{{total1}}</ion-badge>
     </ion-item> 
     <ion-item>
-      <ion-label> +Tax(18%) </ion-label>
+      <ion-label> +Delivery Charge </ion-label>
       <ion-badge slot="end" color="unread">Rs.{{totalpayble}}</ion-badge>
     </ion-item> 
     <ion-item>
@@ -48,6 +48,13 @@
     </ion-item> 
     <br>
     <ion-item>
+        <ion-input [(ngModel)]="discount" name="skillValue" placeholder="Enter Discount code"></ion-input>
+        <button [disabled]="btnflag" ion-button (click)="onclickdis()" item-right type="submit" icon-only>
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+      </ion-item>
+    <ion-item>
+      <br>
       <ion-note slot="start" color="primary">Choose option for payment</ion-note>
     </ion-item>
     <input type="radio" (click)="onclickcash()" name="rdn1" [(ngModel)]="rdn1" value="cash on delivery"> Cash on Delivery

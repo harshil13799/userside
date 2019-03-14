@@ -8,6 +8,9 @@ import { order_class } from '../Classes/order';
 import { orderdetail_class } from '../Classes/orderdetail';
 import { proupdate_class } from '../Classes/productupdate';
 import { ProductService } from '../services/product.service';
+import { AlertController } from '@ionic/angular';
+import { LoginService } from '../services/login.service';
+
 
 export class productup{
   constructor(public p_id:number,public p_qty){}
@@ -61,16 +64,43 @@ export class CheckoutPage implements OnInit {
     newqty1:number[]=[];
     total:number=0;
     total1:number=0;
+    fk_address:string;
     totalpayble:number=0;
     arr1:orderdetail_class[]=[];
-    constructor(private _route:Router,private _order:OrderService,private _addcart:AddtocartService,private _proser:ProductService) { }
+    discount:string;
+    btnflag:boolean=false;
+    constructor(private _route:Router,private _order:OrderService,private _addcart:AddtocartService,private _proser:ProductService,public alertController: AlertController,private _service:LoginService) { }
+
+    async presentAlert() {
+      const alert = await this.alertController.create({
+        message: 'PROMO CODE applied Successfully',
+        buttons: ['OK']
+      });
+      await alert.present();
+    }
+    async presentAlert1() {
+      const alert = await this.alertController.create({
+        message: 'Invalid PROMO CODE',
+        buttons: ['OK']
+      });
+      await alert.present();
+    }
+
     onclickback(){
       this._route.navigate(['product']);
     }
     
     onplaceorder(){
         this.user_id=localStorage.getItem('email_id');
-        this._order.addorder(new order_class(this.total,this.user_id)).subscribe(
+        this._service.getAllUserByEmail_id(this.user_id).subscribe(
+          (data:any)=>{
+            console.log(data);
+            this.fk_address=data[0].u_address;
+            console.log(this.fk_address);
+          
+
+        console.log(this.fk_address,"Address of emp");
+        this._order.addorder(new order_class(this.total,this.user_id,this.fk_address)).subscribe(
           (data:any)=>{
             console.log(data);
             for(this.i=0;this.i<this.cart_arr.length;this.i++)
@@ -128,10 +158,12 @@ export class CheckoutPage implements OnInit {
             console.log(data);
           }
         );
-        
+      }
+    );
     }
     onmakepayment(){
-      this._route.navigate['paytmpayment'];
+      //this._route.navigate['paytmpayment'];
+      window.open('http://localhost:8080/','_self');
     }
     onclickcash(){
       this.flag=true;
@@ -140,6 +172,18 @@ export class CheckoutPage implements OnInit {
     onclickpaytm(){
       this.flag1=true;
       this.flag=false;
+    }
+    onclickdis(){
+      if(this.discount=="NEW50")
+      {
+        this.total=this.total-50;
+        console.log(this.total);
+        this.btnflag=true;
+        this.presentAlert();
+      }
+      else{
+        this.presentAlert1();
+      }
     }
   ngOnInit() {
     this.user_id=localStorage.getItem('email_id');
@@ -167,7 +211,7 @@ export class CheckoutPage implements OnInit {
              this.total+=data[this.i].c_price;
             }
             this.total1=this.total;
-            this.totalpayble=this.total*0.18;
+            this.totalpayble=10;
             console.log(this.totalpayble);
             this.total=this.total+this.totalpayble;
             console.log(this.total);

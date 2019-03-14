@@ -17,6 +17,7 @@ export class OrderService {
     return this._http.get(this.order);
   }
   addorder(item:order_class){
+    console.log(item,"Hello order service");
     let body=JSON.stringify(item)
     let head1=new HttpHeaders().set('Content-Type','application/json');
     return this._http.post(this.order,body,{headers:head1})

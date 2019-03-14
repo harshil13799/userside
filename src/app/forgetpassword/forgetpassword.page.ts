@@ -28,9 +28,9 @@ subject1:string;
       (data:info_class[])=>{
         if(data.length>0){
           this.password=data[0].password;
-          this._mail.sendmail(new sendmail(this.email_id,this.subject1,this.password)).subscribe(
+          this._mail.sendmail(new sendmail(this.email_id,this.subject1,"Your Password Is : "+this.password)).subscribe(
             (data:sendmail[])=>{
-  
+
             }
           );
          this.presentAlert();

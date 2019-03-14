@@ -4,6 +4,8 @@ import { product_class } from '../Classes/product';
 import { Router,ActivatedRoute } from '@angular/router';
 import { category_class } from '../Classes/category';
 import { CategoryService } from '../services/category.service';
+import { SearchproService } from '../services/searchpro.service';
+
 
 @Component({
   selector: 'app-categorydetail',
@@ -27,9 +29,28 @@ export class CategorydetailPage implements OnInit {
   cat_name:string;
   flag:boolean=false;
 
-  constructor(private _actroute:ActivatedRoute,private _route:Router,private _catser:CategoryService) { }
+  constructor(private _actroute:ActivatedRoute,private _route:Router,private _catser:CategoryService,private _search:SearchproService) { }
   onclickback(){
     this._route.navigate(['/category']);
+  }
+
+  changeditems(searchedItem){
+    this.cat_name=this._actroute.snapshot.params['cat_name'];
+    if(searchedItem=="")
+    {
+      searchedItem=" ";
+    }
+    console.log(searchedItem);
+    this._search.getallsearchprobycat(this.cat_name,searchedItem).subscribe(
+      (data:any)=>{
+        this.proarr=data;
+      }
+    );
+  }
+
+  onclickpro(item)
+  {
+    this._route.navigate(['/productdetail',item.p_id]);
   }
   /*applyFilter(filterValue:product_class) 
   {

@@ -23,13 +23,44 @@
       </ion-slide>
     </ion-slides>
   </div>
-  <ion-card>
+  <div>
+      <ion-item>
+          <ion-note  color="primary">Vegetables</ion-note>
+        </ion-item>
+        <ion-row>
+            <ion-col align-items-end class="zoom" *ngFor="let item of catproarr,let i=index">
+                <ion-card style="height:110px;width:110px;">
+                      <ion-card-content >
+                          <img class="image" style="height:60px;width:80px;border-radius:60px;" src="http://localhost:3000/images/product/{{item.p_img}}"> 
+                          {{item.p_name}}
+                      </ion-card-content>
+                  </ion-card>
+              </ion-col>
+        </ion-row>       
+    </div>
+    <hr>
+    <hr>
+    <div>
+        <ion-slides [options]="sliderConfig">
+            
+                <ion-slide *ngFor="let item of proarr">
+                  <ion-card style="height:180px;width:140px;">
+                    <ion-card-header>
+                      <ion-card-title> 
+                        <h5>{{item.p_name}}
+                        Rs.{{item.p_price}}</h5> 
+                      </ion-card-title>
+                      <ion-card-content>
+                        <img src="http://localhost:3000/images/product/{{item.p_img}}" style="height:60px;width:120px;">
+                        <!-- <ion-button expand="full" (click)="oncart()">ADD to cart</ion-button> -->
+                      </ion-card-content>
+                    </ion-card-header>
+                  </ion-card>
+                </ion-slide>
+              </ion-slides>
+
       
-        <ion-card-content *ngFor="let item of prodarr">
-            <img src="http://localhost:3000/images/product/{{item.p_img}}">
-        </ion-card-content>
-      
-    </ion-card>
+        </div>
 
 </ion-content>
 <!-- <ion-card>
@@ -38,4 +69,35 @@
           <img src="http://localhost:3000/images/product/{{item.p_img}}">
       </ion-card-content>
     </ion-card-header>
-  </ion-card> -->
+  </ion-card> 
+
+
+<ion-item>
+        <ion-note slot="start" color="primary">Groceries</ion-note>
+      </ion-item>
+      <ion-chip>
+          <ion-icon name="heart" color="dark"></ion-icon>
+          <ion-label>Default</ion-label>
+        </ion-chip>
+        
+      <ion-row  >
+        <!-- <ion-col align-items-end class="container" >
+          <img class="image" src="http://localhost:3000/images/product/{{item.p_img}}" style="border-radius:70px;">
+          <b>{{item.p_name}}</b>
+          <ion-col align-items-end class="container" *ngFor="let item of proarr,let i=index">
+              <ion-card>
+                    <ion-card-content >
+                        <img class="image" src="http://localhost:3000/images/product/{{item.p_img}}">
+                        {{i}}{{item.p_name}}
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <ion-col align-self-start class="container">
+                <ion-card>
+                    <ion-card-content>
+                        <img class="image" src="http://localhost:3000/images/product/{{item.p_img}}">
+                        {{item.p_name}}{{i}}
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+          </ion-row>-->
