@@ -4,8 +4,7 @@ import { product_class } from '../Classes/product';
 
 import { Router,ActivatedRoute } from '@angular/router';
 import { SortService } from '../services/sort.service';
-
-
+import { SearchproService } from '../services/searchpro.service';
 @Component({
   selector: 'app-product',
   templateUrl: './product.page.html',
@@ -13,7 +12,7 @@ import { SortService } from '../services/sort.service';
 })
 export class ProductPage implements OnInit {
   p_id:number;
-  searchTerm:string;
+  searchedItem:string;
   p_name:string;
   p_price:number;
   p_qty:number;
@@ -29,7 +28,22 @@ export class ProductPage implements OnInit {
    items: product_class[]=[];
 
   sortarr:product_class[]=[];
-  constructor(private _actroute:ActivatedRoute,private _route:Router,private _proser:ProductService,private _sortser:SortService) { }
+
+  
+
+  constructor(private _actroute:ActivatedRoute,private _route:Router,private _proser:ProductService,private _sortser:SortService,private _search:SearchproService) { }
+  changeditems(searchedItem){
+    if(searchedItem=="")
+    {
+      searchedItem=" ";
+    }
+    console.log(searchedItem);
+    this._search.getallsearchpro(searchedItem).subscribe(
+      (data:any)=>{
+        this.proarr=data;
+      }
+    );
+  }
 
   onclickpro(item)
   {

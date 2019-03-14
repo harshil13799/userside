@@ -22,6 +22,7 @@ export class HomePage {
   buffer_stock:number;
   fk_s_id:number;
   proarr:product_class[]=[];
+  catproarr:product_class[]=[];
   i:number=0;
   flag:boolean=false;
   
@@ -37,16 +38,41 @@ export class HomePage {
     slidesPerView:1.3
 
   }
+
+  sliderConfig={
+    spaceBetween:0,
+    centeredSlides:true,
+    slidesPerView:2.0
+  }
+
+
   // ionViewDidLoad(){
   //   setTimeout(()=>
   //   this.Slides.startAutoplay()
   // ,1000);
   // }
+
+  oncat(){
+    this._proser.getallproBycat('grocery').subscribe(
+      (data:any[])=>{
+        this.proarr=data;
+      }
+    );
+  }
+  
+
   ngOnInit() {
     this._proser.getAllproduct().subscribe(
       (data:any)=>{
         this.proarr=data;
         console.log(this.proarr);
+      }
+    );
+
+
+    this._proser.getallproBycat('Vegetable').subscribe(
+      (data:any[])=>{
+        this.catproarr=data;
       }
     );
   }

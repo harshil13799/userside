@@ -64,6 +64,18 @@
           </ion-menu-toggle>
 
           <ion-menu-toggle auto-hide="false">
+            <ion-item [routerDirection]="'root'" routerLink="/pastorder">
+              <ion-icon slot="start" [name]="category"></ion-icon>
+              <ion-label>
+                Past Orders
+              </ion-label>
+              
+            </ion-item>
+          </ion-menu-toggle>
+
+
+
+          <ion-menu-toggle auto-hide="false">
             <ion-item [routerDirection]="'root'"  routerLink="">
               <ion-icon slot="start" [name]="logout"></ion-icon>
               <ion-label>

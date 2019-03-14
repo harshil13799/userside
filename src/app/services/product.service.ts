@@ -14,9 +14,13 @@ export class ProductService {
 
   private productwithoutimg:string='http://Localhost:3000/updateorderafterorder/';
 
+  private deleteallpro:string='http://Localhost:3000/deleteandgetallpro/';
   constructor(private _http:HttpClient) { }
   getAllproduct(){
     return this._http.get(this.product);
+  }
+  getallproBycat(cat_name:string){
+    return this._http.get(this.deleteallpro+cat_name)
   }
   getAllproById(p_id)
   {

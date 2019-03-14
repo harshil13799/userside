@@ -27,7 +27,11 @@ const routes: Routes = [
   { path: 'editpassword/:email_id', loadChildren: './editpassword/editpassword.module#EditpasswordPageModule' },
   { path: 'cart', loadChildren: './cart/cart.module#CartPageModule' },
   { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutPageModule' },
-  { path: 'filterpage', loadChildren: './filterpage/filterpage.module#FilterpagePageModule' }
+  { path: 'filterpage', loadChildren: './filterpage/filterpage.module#FilterpagePageModule' },
+  { path: 'callback', loadChildren: './callback/callback.module#CallbackPageModule' },
+  { path: 'pastorder', loadChildren: './pastorder/pastorder.module#PastorderPageModule' },
+  { path: 'pastorderdetail/:bill_id', loadChildren: './pastorderdetail/pastorderdetail.module#PastorderdetailPageModule' },
+  { path: 'orderstatus', loadChildren: './orderstatus/orderstatus.module#OrderstatusPageModule' }
 ];
 
 @NgModule({
