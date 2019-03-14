@@ -50,16 +50,13 @@ export class ProductPage implements OnInit {
 
   triggerSearch(searchTerm)
     {
-      
-      searchTerm=this._actroute.snapshot.params['p_name'];
-      this._proser.getallproByName(searchTerm).subscribe(
-            (data:any)=>{
-            this.proarr=data;
-            console.log(this.proarr);
-         }
-       );
-      //  this.ngOnInit();
+      this._proser.getAllproduct().subscribe(
+        (data:any)=>{
+          this.proarr=data;
+          console.log(this.proarr);
         }
+      );       
+     }
   onclicksort()
   {
     this._sortser.getallproductINASC().subscribe(

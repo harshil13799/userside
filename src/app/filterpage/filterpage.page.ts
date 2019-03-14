@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filterpage',
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilterpagePage implements OnInit {
 
-  constructor() { }
-
+  constructor(public route:Router) { }
+  onclickcart()
+  {
+    this.route.navigate(['cart']);
+  }
   ngOnInit() {
   }
 

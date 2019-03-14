@@ -14,8 +14,8 @@
     <!-- <input matInput (keyup)="triggerSearch($event.target.value)" placeholder="Search Product" >     -->
    
   <!-- {{searchTerm}} -->
-  <ion-searchbar  [(ngModel)]="searchTerm"  (input)="triggerSearch(searchTerm)"></ion-searchbar>
-   {{searchTerm}}
+  <ion-searchbar  [(ngModel)]="searchTerm"  (ion-Change)="triggerSearch(searchTerm)"></ion-searchbar>
+  {{searchTerm}}
 </ion-toolbar>
 <ion-content padding>
     <ion-list *ngFor="let item of proarr" (click)="onclickpro(item)" >
