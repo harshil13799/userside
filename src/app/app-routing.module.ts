@@ -31,7 +31,8 @@ const routes: Routes = [
   { path: 'callback', loadChildren: './callback/callback.module#CallbackPageModule' },
   { path: 'pastorder', loadChildren: './pastorder/pastorder.module#PastorderPageModule' },
   { path: 'pastorderdetail/:bill_id', loadChildren: './pastorderdetail/pastorderdetail.module#PastorderdetailPageModule' },
-  { path: 'orderstatus', loadChildren: './orderstatus/orderstatus.module#OrderstatusPageModule' }
+  { path: 'orderstatus', loadChildren: './orderstatus/orderstatus.module#OrderstatusPageModule' },  { path: 'splash', loadChildren: './splash/splash.module#SplashPageModule' }
+
 ];
 
 @NgModule({

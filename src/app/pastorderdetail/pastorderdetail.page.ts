@@ -12,6 +12,10 @@ export class PastorderdetailPage implements OnInit {
   constructor(private _past:PastorderService,private _route:Router,private _actsnap:ActivatedRoute) { }
   billdetailarr:billdetail_class[]=[];
 id:number;
+onclickback()
+{
+  this._route.navigate(['/pastorder']);
+}
   ngOnInit() {
     this.id=this._actsnap.snapshot.params['bill_id'];
     this._past.getbilldetails(this.id).subscribe(

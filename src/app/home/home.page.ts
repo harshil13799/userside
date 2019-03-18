@@ -32,12 +32,7 @@ export class HomePage {
     //centeredSlides:true,
     //slidesPerView:1.3
   }
-  sliderConfig={
-    spaceBetween:10,
-    centeredSlides:true,
-    slidesPerView:1.3
-
-  }
+  
 
   sliderConfig={
     spaceBetween:0,
