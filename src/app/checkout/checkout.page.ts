@@ -91,6 +91,8 @@ export class CheckoutPage implements OnInit {
     }
     
     onplaceorder(){
+
+      console.log(this.rdn1,"RADIO");
         this.user_id=localStorage.getItem('email_id');
         this._service.getAllUserByEmail_id(this.user_id).subscribe(
           (data:any)=>{
@@ -100,7 +102,7 @@ export class CheckoutPage implements OnInit {
           
 
         console.log(this.fk_address,"Address of emp");
-        this._order.addorder(new order_class(this.total,this.user_id,this.fk_address)).subscribe(
+        this._order.addorder(new order_class(this.total,this.user_id,this.fk_address,this.rdn1)).subscribe(
           (data:any)=>{
             console.log(data);
             for(this.i=0;this.i<this.cart_arr.length;this.i++)

@@ -24,12 +24,13 @@
     </ion-slides>
   </div>
   <div>
+    <br>
       <ion-item>
-          <ion-note  color="primary">Vegetables</ion-note>
+          <div style="padding:10px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;margin-left:80px;color:blue;">Vegetables</div>
         </ion-item>
         <ion-row>
             <ion-col align-items-end class="zoom" *ngFor="let item of catproarr,let i=index">
-                <ion-card style="height:110px;width:110px;">
+                <ion-card (click)="onclickCard(item)" style="height:110px;width:110px;">
                       <ion-card-content >
                           <img class="image" style="height:60px;width:80px;border-radius:60px;" src="http://localhost:3000/images/product/{{item.p_img}}"> 
                           {{item.p_name}}
@@ -40,18 +41,18 @@
     </div>
     <hr>
     <hr>
-    <div>
+    <div class="divback1">
         <ion-slides [options]="sliderConfig">
             
                 <ion-slide *ngFor="let item of proarr">
-                  <ion-card style="height:180px;width:140px;">
+                  <ion-card style="width:100%;height:150px;">
                     <ion-card-header>
                       <ion-card-title> 
-                        <h5>{{item.p_name}}
-                        Rs.{{item.p_price}}</h5> 
                       </ion-card-title>
+                      <div class="card-title"style="padding:10px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;">{{item.p_name}}</div>
                       <ion-card-content>
                         <img src="http://localhost:3000/images/product/{{item.p_img}}" style="height:60px;width:120px;">
+                        
                         <!-- <ion-button expand="full" (click)="oncart()">ADD to cart</ion-button> -->
                       </ion-card-content>
                     </ion-card-header>
@@ -61,15 +62,51 @@
 
       
         </div>
+        <br>
+        <div class="divback">
+            <ion-slides [options]="forslider" pager="true" paginationType="fraction">
+              <ion-slide>
+                  <img src="http://localhost:3000/images/product/codeback1.jpg" style="width:100%;height:100px;">
+              </ion-slide>
+              <ion-slide>
+                  <img src="http://localhost:3000/images/product/codeback2.jpg" style="width:100%;height:100px;">
+              </ion-slide>
+              <ion-slide>
+                  <img src="http://localhost:3000/images/product/codeback.jpg" style="width:100%;height:100px;">
+              </ion-slide>
+            </ion-slides>
+        </div>
+        <br>
+      <ion-item>
+        <div class="card-title"style="padding:10px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;margin-left:80px;color:blue;">--FRUITS--</div>
+      </ion-item>
+      
 
+      <div>
+        <ion-card style="width:80%;margin-left:35px;">
+            <img src="http://localhost:3000/images/product/apple.jpg" width="100%" height="150px"/>
+            <div class="card-title"style="padding:10px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;">Apple</div>
+          </ion-card>
+        </div>
+        <div>
+          <ion-card style="width:80%;margin-left:35px;">
+              <img src="http://localhost:3000/images/product/grapes.jpg" width="100%" height="150px"/>
+              <div class="card-title"style="padding:10px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;">Grapes</div>
+            </ion-card>
+          </div>
+          <div>
+            <ion-card style="width:80%;margin-left:35px;">
+                <img src="http://localhost:3000/images/product/orange.jpg" width="100%" height="150px"/>
+                <div class="card-title"style="padding:10px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;">Orange</div>
+              </ion-card>
+            </div>
+            <div>
+              <ion-card style="width:80%;margin-left:35px;">
+                  <img src="http://localhost:3000/images/product/banana.jpg" width="100%" height="150px"/>
+                  <div class="card-title"style="padding:10px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;">Banana</div>
+                </ion-card>
+              </div>
 </ion-content>
-<!-- <ion-card>
-    <ion-card-header>
-      <ion-card-content>
-          <img src="http://localhost:3000/images/product/{{item.p_img}}">
-      </ion-card-content>
-    </ion-card-header>
-  </ion-card> 
 
 
 <ion-item>
@@ -101,4 +138,12 @@
                 </ion-card>
             </ion-col>
           </ion-row>-->
+
+
+<!-- <div>
+  <ion-card (click)="onclickcard(item)" style="width:80%;margin-left:35px;" *ngFor="let item of catproarrforfruits">
+      <img src="http://localhost:3000/images/product/{{item.p_img}}" width="100%" height="150px"/>
+      <div class="card-title"style="padding:10px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;">{{item.p_name}}</div>
+    </ion-card>
+  </div> -->
 

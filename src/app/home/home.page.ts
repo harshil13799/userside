@@ -23,6 +23,7 @@ export class HomePage {
   fk_s_id:number;
   proarr:product_class[]=[];
   catproarr:product_class[]=[];
+  catproarrforfruits:product_class[]=[];
   i:number=0;
   flag:boolean=false;
   
@@ -37,15 +38,8 @@ export class HomePage {
   sliderConfig={
     spaceBetween:0,
     centeredSlides:true,
-    slidesPerView:2.0
+    slidesPerView:1.8
   }
-
-
-  // ionViewDidLoad(){
-  //   setTimeout(()=>
-  //   this.Slides.startAutoplay()
-  // ,1000);
-  // }
 
   oncat(){
     this._proser.getallproBycat('grocery').subscribe(
@@ -54,8 +48,10 @@ export class HomePage {
       }
     );
   }
-  
-
+  onclickCard(item)
+  {
+    this._route.navigate(['/productdetail',item.p_id]);
+  }  
   ngOnInit() {
     this._proser.getAllproduct().subscribe(
       (data:any)=>{
@@ -68,6 +64,13 @@ export class HomePage {
     this._proser.getallproBycat('Vegetable').subscribe(
       (data:any[])=>{
         this.catproarr=data;
+      }
+    );
+
+
+    this._proser.getallproBycat('fruits').subscribe(
+      (data:any[])=>{
+        this.catproarrforfruits=data;
       }
     );
   }
