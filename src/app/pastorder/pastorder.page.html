@@ -1,19 +1,38 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>pastorder</ion-title>
+    <ion-title>
+        <button (click)="onclickback()"><ion-icon name="ios-arrow-back"></ion-icon></button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Past Orders
+
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <ion-list *ngFor="let item of pastarr,let i=index" >
     <ion-item >
-      <ion-label>
-        <h2><b>{{item.date | date: 'dd:MM:yyyy'}}</b></h2>
-        <h3><b>{{item.bill_amt}} Rs.</b></h3>
-        <ion-icon style="margin-left:190px;" name="arrow-dropright" (click)="onclickmore(item)"></ion-icon>
-      </ion-label>
+      <ion-avatar slot="end">
+          <img src="http://localhost:3000/images/product/{{item.p_img}}" style="height:50px;width:60px;">
+          </ion-avatar>
+          <ion-label>
+          <h1><b>{{item.p_name}}</b></h1>
+          <h3><b>Quantity :{{item.qty}} Gm.</b></h3>
+          <h3><b>Date     :{{item.o_date | date: 'dd-MM-yyyy'}}</b></h3>
+          </ion-label>
     </ion-item>
   </ion-list>
-
-
+  
 </ion-content>
+<!-- <div>
+  <img [hidden]="flag1" src="http://localhost:3000/images/product/order.jpg" >
+<ion-button [hidden]="flag1" (click)="onclickstart()" shape="round" color="light" style="margin-left:35px;">Start Shopping</ion-button>
+</div>
+<ion-list>
+  <ion-item *ngFor="let d of pastarr; let i=index" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+    <h3>
+      {{d.date | date: 'dd:MM:yyyy'}}
+      <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+    </h3>
+    <div *ngIf="isGroupShown(i)">{{d.date}}</div>
+  </ion-item>
+</ion-list> -->
