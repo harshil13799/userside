@@ -11,6 +11,7 @@ export class ProductService {
   private product:string='http://Localhost:3000/product/';
   private productwithoutimg:string='http://Localhost:3000/updateorderafterorder/';
   private deleteallpro:string='http://Localhost:3000/deleteandgetallpro/';
+  private similar:string='http://Localhost:3000/similar/';
   constructor(private _http:HttpClient) { }
   getAllproduct(){
     return this._http.get(this.product);
@@ -22,6 +23,10 @@ export class ProductService {
   {
     console.log(p_id);
     return this._http.get(this.product+p_id)
+  }
+  similarProduct(fk_cat_id:number,p_id:number)
+  {
+    return this._http.get(this.similar+fk_cat_id+"/"+p_id);
   }
   updateprowithoutimg(item){
     let body=JSON.stringify(item)

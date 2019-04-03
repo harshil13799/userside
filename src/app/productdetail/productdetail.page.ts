@@ -4,6 +4,7 @@ import { ProductService } from '../services/product.service';
 import { product_class } from '../Classes/product';
 import { cart_class } from '../Classes/cart';
 import { AddtocartService } from '../services/addtocart.service';
+import { AlertController } from '@ionic/angular';
 
 export interface qty{
   value:string;
@@ -27,6 +28,7 @@ export class ProductdetailPage implements OnInit {
   x:number;
   user_id:string;
   prodarr:product_class[]=[];
+  similararr:product_class[]=[];
   addcart:cart_class[]=[];
   cartarr:cart_class[]=[];
   qty:number;
@@ -39,9 +41,30 @@ export class ProductdetailPage implements OnInit {
     {value:"1000",viewValue:"1 Kg"},
     {value:"2000",viewValue:"2 Kg"},
   ];
+
+  sliderConfig={
+    spaceBetween:0,
+    centeredSlides:true,
+    slidesPerView:1.8
+  }
+  
   selectedFile:File=null;
   flag:boolean=false;
-  constructor(private _route:Router,private _acroute:ActivatedRoute,private _proser:ProductService,private _addser:AddtocartService) { }
+  constructor(private _route:Router,private _acroute:ActivatedRoute,private _proser:ProductService,private _addser:AddtocartService,public alertController: AlertController) { }
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      message: 'Item Added in Your Cart',
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+  async presentAlert1() {
+    const alert = await this.alertController.create({
+      message: 'Please Select Quantity',
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
   onclickback(){
     this._route.navigate(['/product']);
   }
@@ -50,16 +73,17 @@ export class ProductdetailPage implements OnInit {
     console.log(item);
     if(this.qty==null)
     {
-        alert("plz choose qty")
+        this.presentAlert1();
     }
     else
     {
       this._addser.getAllcart().subscribe(
         (data:any[])=>{
+          console.log(data)
           this.cartarr=data;
           console.log(this.cartarr);
         }
-      );
+      );   
       if(this.cartarr.find(x=>x.fk_p_id==item.p_id))
       {
         alert("Already in cart")
@@ -85,19 +109,29 @@ export class ProductdetailPage implements OnInit {
           this.addcart.push(new cart_class(this.user_id,this.price,this.p_id,this.p_name,this.qty,this.p_img,this.p_mfg,this.fk_cat_id,this.p_price));
           console.log(data);
 
-          alert("added to your cart");
+          this.presentAlert();
           this._route.navigate(['/product']);
         }
       );
     }
     }
+    
   }
   ngOnInit() {
     this.x=this._acroute.snapshot.params['p_id'];
     this._proser.getAllproById(this.x).subscribe(
           (data:any)=>{
+          this.p_id=data[0].p_id;
+          this.fk_cat_id=data[0].fk_cat_id;
           this.prodarr=data;
           console.log(this.prodarr);
+
+          this._proser.similarProduct(this.fk_cat_id,this.p_id).subscribe(
+            (data:product_class[])=>{
+              this.similararr=data;
+              console.log(this.similararr,"similar arr")
+            }
+          );
        }
      );
   }

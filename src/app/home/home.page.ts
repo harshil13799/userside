@@ -2,6 +2,7 @@ import { Component,ViewChild } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { product_class } from '../Classes/product';
 import { Router,ActivatedRoute } from '@angular/router';
+import { IonSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,8 @@ import { Router,ActivatedRoute } from '@angular/router';
 
 export class HomePage {
   //@ViewChild(Slides) slides: Slides;
-
+  @ViewChild('mySlider', { read: IonSlides }) slides: IonSlides;
+  @ViewChild('mySlider1', { read: IonSlides }) slides1: IonSlides;
   p_id:number;
   p_name:string;
   p_price:number;
@@ -40,6 +42,13 @@ export class HomePage {
     slidesPerView:1.8
   }
 
+  slidesDidLoad(slides: IonSlides) {
+  slides.startAutoplay();
+}
+
+slidesDidLoad1(slides1: IonSlides) {
+  slides1.startAutoplay();
+}
   oncat(){
     this._proser.getallproBycat('grocery').subscribe(
       (data:any[])=>{

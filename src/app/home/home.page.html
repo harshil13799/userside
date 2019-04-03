@@ -11,7 +11,7 @@
 
 <ion-content>
   <div class="divback">
-    <ion-slides [options]="forslider" pager="true" paginationType="fraction">
+    <ion-slides [options]="forslider" pager="true" paginationType="fraction" #mySlider1 (ionSlidesDidLoad)="slidesDidLoad1(mySlider1)">
       <ion-slide>
           <img src="http://localhost:3000/images/product/offer1.jpg">
       </ion-slide>
@@ -42,7 +42,7 @@
     <hr>
     <hr>
     <div class="divback1">
-        <ion-slides [options]="sliderConfig">
+        <ion-slides [options]="sliderConfig" #mySlider (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
             
                 <ion-slide *ngFor="let item of proarr">
                   <ion-card style="width:100%;height:150px;">
@@ -64,7 +64,7 @@
         </div>
         <br>
         <div class="divback">
-            <ion-slides [options]="forslider" pager="true" paginationType="fraction">
+            <ion-slides [options]="forslider" pager="true" paginationType="fraction" #mySlider (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
               <ion-slide>
                   <img src="http://localhost:3000/images/product/codeback1.jpg" style="width:100%;height:100px;">
               </ion-slide>
@@ -107,10 +107,3 @@
                 </ion-card>
               </div>
 </ion-content>
-
-<!-- <div>
-  <ion-card (click)="onclickcard(item)" style="width:80%;margin-left:35px;" *ngFor="let item of catproarrforfruits">
-      <img src="http://localhost:3000/images/product/{{item.p_img}}" width="100%" height="150px"/>
-      <div class="card-title"style="padding:10px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;">{{item.p_name}}</div>
-    </ion-card>
-  </div> -->
