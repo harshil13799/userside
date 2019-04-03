@@ -33,6 +33,7 @@ export class LoginPage implements OnInit {
     await alert.present();
     this._r.navigate(['login']);
   }
+  
   onsignup(){
     this._r.navigate(['signup'])
   }

@@ -44,7 +44,7 @@ export class ProductPage implements OnInit {
       }
     );
   }
-
+  
   onclickpro(item)
   {
     this._route.navigate(['/productdetail',item.p_id]);
@@ -55,6 +55,10 @@ export class ProductPage implements OnInit {
   onclickadd(item)
   {
    this._route.navigate(['/productdetail',item.p_id]);
+  }
+  ongosplash()
+  {
+    this._route.navigate(['/splash']);
   }
   onclickcart()
   {
