@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ActivatedRoute,Router } from '@angular/router';
+
 @Component({
   selector: 'app-splash',
   templateUrl: './splash.page.html',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SplashPage implements OnInit {
 
-  constructor() { }
+
+  constructor(private _route:Router) { }
+  onclickDiv()
+  {
+    this._route.navigate(['/login']);
+  }
 
   ngOnInit() {
   }

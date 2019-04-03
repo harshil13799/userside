@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'splash',
     pathMatch: 'full'
   },
   {
@@ -31,8 +31,10 @@ const routes: Routes = [
   { path: 'callback', loadChildren: './callback/callback.module#CallbackPageModule' },
   { path: 'pastorder', loadChildren: './pastorder/pastorder.module#PastorderPageModule' },
   { path: 'pastorderdetail/:bill_id', loadChildren: './pastorderdetail/pastorderdetail.module#PastorderdetailPageModule' },
-  { path: 'orderstatus', loadChildren: './orderstatus/orderstatus.module#OrderstatusPageModule' },  { path: 'splash', loadChildren: './splash/splash.module#SplashPageModule' }
-
+  { path: 'orderstatus', loadChildren: './orderstatus/orderstatus.module#OrderstatusPageModule' },
+  { path: 'wishlist', loadChildren: './wishlist/wishlist.module#WishlistPageModule' },
+  { path: 'splash', loadChildren: './splash/splash.module#SplashPageModule' },
+  { path: 'faq', loadChildren: './faq/faq.module#FaqPageModule' }
 ];
 
 @NgModule({

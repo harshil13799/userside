@@ -11,7 +11,7 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
-gender_arr:string[]=["male","female"];
+gender_arr:string[]=["Male","Female"];
 cityarr:string[]=["Ahmedabad","Baroda","Surat"];
 gender:string="male";
 infoarr:info_class[]=[];

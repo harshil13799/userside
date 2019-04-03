@@ -15,6 +15,7 @@ export class ProductService {
   private productwithoutimg:string='http://Localhost:3000/updateorderafterorder/';
 
   private deleteallpro:string='http://Localhost:3000/deleteandgetallpro/';
+  private similar:string='http://Localhost:3000/similar/';
   constructor(private _http:HttpClient) { }
   getAllproduct(){
     return this._http.get(this.product);
@@ -31,6 +32,12 @@ export class ProductService {
   getallproByName(p_name)
   {
     return this._http.get(this.searchproduct+p_name)
+  }
+
+
+  similarProduct(fk_cat_id:number,p_id:number)
+  {
+    return this._http.get(this.similar+fk_cat_id+"/"+p_id);
   }
 
   updateprowithoutimg(item){

@@ -13,7 +13,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilterdataPipe } from './filterdata.pipe';
 
 
-
 @NgModule({
   declarations: [AppComponent, FilterdataPipe],
   entryComponents: [],
@@ -32,7 +31,7 @@ import { FilterdataPipe } from './filterdata.pipe';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     StatusBar,

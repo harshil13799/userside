@@ -150,6 +150,10 @@
   
   .limiter {
     width: 100%;
+<<<<<<< HEAD
+=======
+    height:100%;
+>>>>>>> f778f9fb4c5daaac9e6108a8f090e8a152427c68
     margin: 0 auto;
   }
   
@@ -192,11 +196,13 @@
   
   .login100-form-avatar {
     display: block;
-    width: 120px;
-    height: 120px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto;
+    margin-top: 120px;
+
   }
   
   .login100-form-avatar img {

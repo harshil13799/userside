@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
-
+<!-- 
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -52,5 +52,25 @@
     </mat-form-field>
     <br>
     
+  </form> -->
+
+
+
+  <form>
+    
+    <div class="card" *ngFor="let item of infoarr">
+      <img src="http://localhost:3000/images/product/profilelogo.jpg" style="height:40%;width:40%;">
+      <h1>{{item.u_name}}</h1>
+      <p class="title">{{item.email_id}}</p>
+      <p class="title">{{item.u_address}}</p>
+      <p class="title">{{item.u_city}}</p>
+      <p class="title">{{item.u_mno}}</p>
+      
+      <p><button (click)="onpswd()">Edit Password</button></p>
+      <p><button (click)="onupdate()">Edit Profile</button></p>
+    </div>
+  
   </form>
+
+
 </ion-content>

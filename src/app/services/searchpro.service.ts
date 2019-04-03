@@ -18,6 +18,6 @@ export class SearchproService {
   }
 
   getallsearchprobycat(cat_name,searcheditems){
-    return this._http.get(this.searchprobycat+cat_name+searcheditems)
+    return this._http.get(this.searchprobycat+cat_name+"/"+searcheditems)
   }
 }

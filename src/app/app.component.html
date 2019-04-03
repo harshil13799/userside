@@ -11,7 +11,7 @@
 
           <ion-menu-toggle auto-hide="false">
             <ion-item [routerDirection]="'root'"  routerLink="/login">
-              <ion-icon slot="start" name="ios-home"></ion-icon>
+              <ion-icon slot="start" name="log-in"></ion-icon>
               <ion-label>
                 Login
               </ion-label>
@@ -36,18 +36,9 @@
                 </ion-item>
               </ion-menu-toggle>
 
-              <ion-menu-toggle auto-hide="false">
-                <ion-item [routerDirection]="'root'" routerLink="/cart">
-                  <ion-icon slot="start" name="cart"></ion-icon>
-                  <ion-label>
-                    Cart
-                  </ion-label>
-                </ion-item>
-              </ion-menu-toggle>
-
           <ion-menu-toggle auto-hide="false">
             <ion-item [routerDirection]="'root'" routerLink="/product">
-              <ion-icon slot="start" [name]="product"></ion-icon>
+              <ion-icon slot="start" name="filing"></ion-icon>
               <ion-label>
                 Product
               </ion-label>
@@ -56,16 +47,37 @@
           
           <ion-menu-toggle auto-hide="false">
             <ion-item [routerDirection]="'root'" routerLink="/category">
-              <ion-icon slot="start" [name]="category"></ion-icon>
+              <ion-icon slot="start" name="albums"></ion-icon>
               <ion-label>
                 Categories 
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
+          
+          <ion-menu-toggle auto-hide="false">
+              <ion-item [routerDirection]="'root'" routerLink="/cart">
+                <ion-icon slot="start" name="cart"></ion-icon>
+                <ion-label>
+                  Cart
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false">
+              <ion-item [routerDirection]="'root'" routerLink="/wishlist">
+                <ion-icon slot="start" name="heart"></ion-icon>
+                <ion-label>
+               WishList
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+  
+                
+            
 
           <ion-menu-toggle auto-hide="false">
             <ion-item [routerDirection]="'root'" routerLink="/pastorder">
-              <ion-icon slot="start" [name]="category"></ion-icon>
+              <ion-icon slot="start" name="clipboard"></ion-icon>
               <ion-label>
                 Past Orders
               </ion-label>
@@ -74,10 +86,20 @@
           </ion-menu-toggle>
 
 
+          <ion-menu-toggle auto-hide="false">
+              <ion-item [routerDirection]="'root'" routerLink="/faq">
+                <ion-icon slot="start" name="chatboxes"></ion-icon>
+                <ion-label>
+                  FAQs
+                </ion-label>
+                
+              </ion-item>
+            </ion-menu-toggle>
+  
 
           <ion-menu-toggle auto-hide="false">
-            <ion-item [routerDirection]="'root'"  routerLink="">
-              <ion-icon slot="start" [name]="logout"></ion-icon>
+            <ion-item [routerDirection]="'root'"  routerLink="/login">
+              <ion-icon slot="start" name="exit"></ion-icon>
               <ion-label>
                 Logout
               </ion-label>

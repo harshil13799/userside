@@ -5,6 +5,8 @@ import { product_class } from '../Classes/product';
 import { Router,ActivatedRoute } from '@angular/router';
 import { SortService } from '../services/sort.service';
 import { SearchproService } from '../services/searchpro.service';
+import { wishlist_class } from '../Classes/wishlist';
+import { WishlistService } from '../services/wishlist.service';
 @Component({
   selector: 'app-product',
   templateUrl: './product.page.html',
@@ -27,11 +29,18 @@ export class ProductPage implements OnInit {
 
    items: product_class[]=[];
 
-  sortarr:product_class[]=[];
+  
 
   
 
-  constructor(private _actroute:ActivatedRoute,private _route:Router,private _proser:ProductService,private _sortser:SortService,private _search:SearchproService) { }
+ 
+
+  wishflag:boolean=false;
+  wishflag1:boolean=true;
+  user_id:string;
+  sortarr:product_class[]=[];
+  constructor(private _actroute:ActivatedRoute,private _route:Router,private _proser:ProductService,private _sortser:SortService,private _search:SearchproService,private _wishser:WishlistService) { }
+
   changeditems(searchedItem){
     if(searchedItem=="")
     {
@@ -51,6 +60,17 @@ export class ProductPage implements OnInit {
   }
   onclickfilter(){
     this._route.navigate(['/filterpage']);
+  }
+  onclickwish(item){
+    console.log(item,"wishitem");
+    this.wishflag=true;
+    this.wishflag1=false;
+    this.user_id=localStorage.getItem('email_id');
+    this._wishser.addtowishlist(new wishlist_class(this.user_id,item.p_id,item.p_name,item.p_img,item.p_mfg,item.fk_cat_id,item.p_price)).subscribe(
+      (data:any)=>{
+        console.log(data);
+      }
+    );
   }
   onclickadd(item)
   {

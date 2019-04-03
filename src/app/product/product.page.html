@@ -19,11 +19,15 @@
 </ion-toolbar>
 <ion-content padding>
     <ion-list *ngFor="let item of proarr" (click)="onclickpro(item)" >
-       <ion-item >
+
+        <ion-item>
+
           <ion-avatar slot="start">
               <img src="http://localhost:3000/images/product/{{item.p_img}}" style="height:50px;width:60px;">
           </ion-avatar>
+          
           <ion-label>
+              <ion-icon name="heart-empty" slot="end" (click)="onclickwish(item)" style="margin-left:115px;margin-top:-1px;"></ion-icon>
             <h2><b>{{item.p_name}}</b></h2>
             <h3>Rs.{{item.p_price}}</h3><ion-button (click)="onclickadd(item)" style="margin-left:85px;margin-top:-10px;">Add</ion-button>
           </ion-label>

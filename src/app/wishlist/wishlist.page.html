@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><button (click)="onclickback()"><ion-icon name="ios-arrow-back"></ion-icon></button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your WishList</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list *ngFor="let item of wisharr,let i=index" >
+        <ion-item >
+          <ion-avatar slot="start">
+              <img src="http://localhost:3000/images/product/{{item.fk_p_img}}" style="height:50px;width:60px;">
+          </ion-avatar>
+          <ion-label>
+            <h2><b>{{item.fk_p_name}}</b></h2>
+            <h3><b>{{item.fk_p_price}}</b></h3>
+            <ion-icon style="margin-left:80px;"name="trash" (click)="onclickdelete(item)"></ion-icon>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <div>
+          <img [hidden]="flag1" src="http://localhost:3000/images/product/wishlist.jpg" >
+      <!-- <ion-button [hidden]="flag1" (click)="onclickstart()" shape="round" style="margin-left:30px;">Start Shopping</ion-button> -->
+      </div>
+</ion-content>
