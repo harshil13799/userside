@@ -9,19 +9,33 @@
 <ion-content padding>
   <p>Choose Range</p>
   <ion-item>
-    <ion-range min="100" max="200" color="secondary">
+    <ion-range (ionChange)="optionsFn(category)" min="100" max="200" color="secondary">
       <ion-label slot="start">100</ion-label>
       <ion-label slot="end">200</ion-label>
     </ion-range>
   </ion-item>
 
+
+  <p>Choose Range:-</p>
+  <ion-item>
+      <ion-label>Select Range</ion-label>
+      <ion-select (ionChange)="optionsFn(category,range)" [(ngModel)]="range"  multiple="false">
+        <ion-select-option  value="20">Upto 20</ion-select-option>
+        <ion-select-option   value="50">Upto 50</ion-select-option>
+        <ion-select-option  value="100">Upto 100</ion-select-option>
+        <ion-select-option  value="150">Upto 150</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
 <p>Choose Category:-</p>
   <ion-item>
       <ion-label>Category</ion-label>
-      <ion-select multiple="false">
-        <ion-select-option value="vegetable" selected>vegetables</ion-select-option>
-        <ion-select-option value="grocery">grocery</ion-select-option>
-        <ion-select-option value="fruites" selected>Fruites</ion-select-option>
+      <ion-select (ionChange)="optionsFn(category,range)" [(ngModel)]="category"  multiple="false">
+          <ion-select-option  *ngFor="let item of catarr"  [value]="item.cat_id">{{item.cat_name}}</ion-select-option>
+        <!-- <ion-select-option  value="Vegetable">Vegetable</ion-select-option>
+        <ion-select-option   value="Grocery">Grocery</ion-select-option>
+        <ion-select-option  value="Fruits">Fruits</ion-select-option> -->
       </ion-select>
     </ion-item>
     
@@ -29,6 +43,6 @@
 </ion-content>
 
 <ion-footer style="background-color:white;">
-    <ion-button expand="full" shape="round">Apply Filter</ion-button>
+    <ion-button expand="full" (click)="onclickapply()" shape="round">Apply Filter</ion-button>
   </ion-footer>
   

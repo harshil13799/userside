@@ -8,9 +8,9 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-toolbar>
-  <ion-searchbar (ionChange)="changeditems(searchedItem)" [(ngModel)]="searchedItem" placeholder="Search Products here..."></ion-searchbar>
-  </ion-toolbar>
+<!-- <ion-toolbar>
+   <ion-searchbar (ionChange)="changeditems(searchedItem)" [(ngModel)]="searchedItem" placeholder="Search Products here..."></ion-searchbar>
+  </ion-toolbar> -->
 <ion-content padding>
     <ion-list *ngFor="let item of proarr" (click)="onclickpro(item)" >
         <ion-item >

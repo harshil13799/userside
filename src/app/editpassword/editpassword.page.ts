@@ -4,7 +4,7 @@ import { Routes } from '@angular/router';
 import { changepwd_class } from '../Classes/changepwd';
 import { ChangepswdService } from '../services/changepswd.service';
 import { Router } from '@angular/router';
-
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-editpassword',
@@ -17,12 +17,19 @@ export class EditpasswordPage implements OnInit {
   password:string;
   newpswd:string;
   oldpswd:string;
-
-  constructor(private _route:Router,private _actroute:ActivatedRoute,private _update:ChangepswdService) { }
+  
+  constructor(private _route:Router,private _actroute:ActivatedRoute,private _update:ChangepswdService,public alertController: AlertController) { }
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      message: 'Old Password And New Password Must be Different',
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
   onupdate(){
     if(this.oldpswd==this.newpswd)
     {
-        alert("Old Password And New Password Must be Different")
+        this.presentAlert();
     }
     else
     {

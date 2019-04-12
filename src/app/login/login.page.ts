@@ -18,26 +18,41 @@ export class LoginPage implements OnInit {
   u_type:string;
   flag:boolean=true;
   constructor(private _loginser:LoginService,private _r:Router,public alertController: AlertController) { }
-  async presentAlert() {
-    const alert = await this.alertController.create({
+    async presentAlert() {
+      const alert = await this.alertController.create({
       message: 'Login Successfully',
       buttons: ['OK']
     });
-    await alert.present();
-  }
-  async presentAlert1() {
-    const alert = await this.alertController.create({
+      await alert.present();
+    }
+    async presentAlert1() {
+      const alert = await this.alertController.create({
       message: 'Invalid Username And Password',
       buttons: ['OK']
     });
-    await alert.present();
-    this._r.navigate(['login']);
-  }
-  onsignup(){
-    this._r.navigate(['signup'])
-  }
-  onLogin(){
-    
+      await alert.present();
+      this._r.navigate(['login']);
+    }
+
+    async presentAlert2() {
+      const alert = await this.alertController.create({
+      message: 'Minimum 8 Characters required',
+      buttons: ['OK']
+    });
+      await alert.present();
+      this._r.navigate(['login']);
+    }
+
+    onsignup(){
+      this._r.navigate(['signup'])
+    }
+    onLogin(){
+    if(this.password.length<=8)
+    {
+      this.presentAlert2();
+    }
+    else
+    {
     console.log(this.email_id,this.password);
     this._loginser.getUserLogin(new info_class(this.email_id,this.password)).subscribe(
       (data:any[])=>{
@@ -46,8 +61,7 @@ export class LoginPage implements OnInit {
         {
           this.presentAlert();
           localStorage.setItem('email_id',this.email_id);
-        console.log(localStorage.getItem('email_id'));
-        this._r.navigate(['home'])
+          this._r.navigate(['home'])
         }
         else
         {
@@ -56,6 +70,7 @@ export class LoginPage implements OnInit {
         }
       }
     );
+  }
 }
   ngOnInit() {
   }

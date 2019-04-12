@@ -6,6 +6,7 @@ import { SortService } from '../services/sort.service';
 import { SearchproService } from '../services/searchpro.service';
 import { wishlist_class } from '../Classes/wishlist';
 import { WishlistService } from '../services/wishlist.service';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-product',
   templateUrl: './product.page.html',
@@ -28,7 +29,18 @@ export class ProductPage implements OnInit {
   wishflag1:boolean=true;
   user_id:string;
   sortarr:product_class[]=[];
-  constructor(private _actroute:ActivatedRoute,private _route:Router,private _proser:ProductService,private _sortser:SortService,private _search:SearchproService,private _wishser:WishlistService) { }
+  category:string;
+  range:number;
+  filterflag:number=0;
+  constructor(private _actroute:ActivatedRoute,private _route:Router,private _proser:ProductService,private _sortser:SortService,private _search:SearchproService,private _wishser:WishlistService,public alertController: AlertController) { }
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      message: 'Sorry,No Related Products Found',
+      buttons: ['OK']
+    });
+    await alert.present();
+    
+  }
   changeditems(searchedItem){
     if(searchedItem=="")
     {
@@ -46,6 +58,7 @@ export class ProductPage implements OnInit {
     this._route.navigate(['/productdetail',item.p_id]);
   }
   onclickfilter(){
+    this.filterflag=1;
     this._route.navigate(['/filterpage']);
   }
   onclickwish(item){
@@ -82,6 +95,22 @@ export class ProductPage implements OnInit {
         console.log(this.proarr);
       }
     );
+    this.category=this._actroute.snapshot.params['category'];
+    this.range=this._actroute.snapshot.params['range'];
+    console.log(this.category);
+    if(this.category!=null && this.range!=null)
+    {
+      this._sortser.getallfilterpro(this.category,this.range).subscribe(
+        (data:any)=>{
+          this.proarr=data;
+          console.log(data);
+          if(this.proarr.length==0)
+          {
+              this.presentAlert();              
+          }
+        }
+      );
+    }
   }
 
 }
