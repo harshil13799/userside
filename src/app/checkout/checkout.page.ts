@@ -174,7 +174,7 @@ export class CheckoutPage implements OnInit {
     }
     onmakepayment(){
       //this._route.navigate['paytmpayment'];
-      window.open('http://localhost:8080/','_self');
+      window.open('http://localhost:8080/','_parent');
     }
     onclickcash(){
       this.flag=true;

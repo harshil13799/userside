@@ -18,7 +18,8 @@
           </ion-avatar>
           
           <ion-label>
-              <ion-icon name="heart-empty" slot="end" (click)="onclickwish(item)" style="margin-left:115px;margin-top:-1px;"></ion-icon>
+             <ion-icon [hidden]="wishflag" name="heart-empty"  slot="end" (click)="onclickwish(item)" style="margin-left:115px;margin-top:-1px;"></ion-icon>
+             <ion-icon [hidden]="wishflag1" name="heart"  slot="end" style="margin-left:115px;margin-top:-1px;"></ion-icon>
             <h2><b>{{item.p_name}}</b></h2>
             <h3>Rs.{{item.p_price}}</h3><ion-button (click)="onclickadd(item)" style="margin-left:85px;margin-top:-10px;">Add</ion-button>
           </ion-label>

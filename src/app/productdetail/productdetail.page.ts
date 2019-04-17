@@ -68,6 +68,13 @@ export class ProductdetailPage implements OnInit {
   onclickback(){
     this._route.navigate(['/product']);
   }
+
+  onclickpro(item)
+  {
+    console.log("hello");
+    this._route.navigate(['/productdetail',item.p_id]);
+  }
+
   onclickaddtocart(item)
   {
     console.log(item);

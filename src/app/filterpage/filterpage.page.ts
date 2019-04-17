@@ -21,7 +21,22 @@ public optionsFn(category,range): void { //here item is an object
 }
 onclickapply()
 {
-  this._route.navigate(['/product',this.category,this.range]);
+  if(this.category==null && this.range==null)
+  {
+    this._route.navigate(['/product']);  
+  }
+  else if(this.category==null)
+  {
+    console.log(this.range);
+    this._route.navigate(['/product',this.range]);
+  }
+  else if(this.range==null){
+    this._route.navigate(['/productcat',this.category]);
+  }
+  else
+  {
+    this._route.navigate(['/product',this.category,this.range]);
+  }
 }
   ngOnInit() {
     this._catser.getAllcat().subscribe(

@@ -10,12 +10,12 @@
         </span>
           <div class="example-container">
             <mat-form-field style="width: 300px;color:#0A0906">
-            <input matInput #user_id1="ngModel"
+            <input matInput type="email" #user_id1="ngModel"
               [(ngModel)]="email_id"
               name="email_id"
               placeholder="  Enter Email_id"
               required  style="width: 300px;">
-            <mat-error> Email is required</mat-error>
+            <mat-error > Email is required</mat-error>
            </mat-form-field>
           </div>
           <br>

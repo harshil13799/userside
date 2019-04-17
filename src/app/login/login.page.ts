@@ -52,25 +52,25 @@ export class LoginPage implements OnInit {
       this.presentAlert2();
     }
     else
-    {
-    console.log(this.email_id,this.password);
-    this._loginser.getUserLogin(new info_class(this.email_id,this.password)).subscribe(
-      (data:any[])=>{
-        console.log(data);
-        if(data.length>0)
-        {
-          this.presentAlert();
-          localStorage.setItem('email_id',this.email_id);
-          this._r.navigate(['home'])
-        }
-        else
-        {
-          this.presentAlert1();
-          this._r.navigate(['login']);
-        }
+    { 
+        console.log(this.email_id,this.password);
+        this._loginser.getUserLogin(new info_class(this.email_id,this.password)).subscribe(
+        (data:any[])=>{
+            console.log(data);
+            if(data.length>0)
+            {
+              this.presentAlert();
+              localStorage.setItem('email_id',this.email_id);
+              this._r.navigate(['home'])
+            }
+            else
+            {
+            this.presentAlert1();
+            this._r.navigate(['login']);
+            }
+          }
+        );
       }
-    );
-  }
 }
   ngOnInit() {
   }
