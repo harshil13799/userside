@@ -17,8 +17,8 @@
             <h3><b>{{item.c_qty}} gm</b></h3>
             <h3>Total value : {{tot[i]}} Rs.</h3>
             <h3>QTY: {{qty[i]}}</h3>
-            <select [(ngModel)]="qty[i]"  (change)="onchange(item,i)">
-              <option *ngFor="let item of qtyarr">
+            <select  [(ngModel)]="qty[i]"  (change)="onchange(item,i)">
+              <option  *ngFor="let item of qtyarr">
                 {{item}}
               </option>
             </select><ion-icon style="margin-left:80px;"name="trash" (click)="onclickdelete(item)"></ion-icon>
@@ -27,7 +27,7 @@
       </ion-list>
       <div>
           <img [hidden]="flag1" src="http://localhost:3000/images/product/sad.jpg" >
-      <ion-button [hidden]="flag1" (click)="onclickstart()" shape="round" style="margin-left:30px;">Start Shopping</ion-button>
+      <ion-button [hidden]="flag1" (click)="onclickstart()" shape="round" style="margin-left:40px;">Start Shopping</ion-button>
       </div>
 </ion-content>
 

@@ -46,40 +46,6 @@ email_id:string;
                this.pastarr=data;
             }
            
-           );  
-    
+           );   
   }
-
-
-
-
-//   this._past.getbillrecord(localStorage.getItem('email_id')).subscribe(
-//     (data:any)=>{
-//       if(data.length!=0)
-//       {
-//         this.flag=false;
-//         console.log(this.flag,"11");
-//         this.flag1=true;
-//       }
-//       if(data.length==0)
-//       {
-//         this.flag=true;
-//         console.log(this.flag,"new");
-//         this.flag1=false;
-//       }
-//       this.email_id=localStorage.getItem('email_id');
-//       this._past.getbilldetailsbyemail(this.email_id).subscribe(
-//         (data:any)=>{
-//           console.log(data);
-//           this.billdetailarr=data;
-//         }
-       
-//       );  
-//       console.log(data);
-//       this.pastarr=data;
-    
-//     }
-//   );
-
-// }
 }

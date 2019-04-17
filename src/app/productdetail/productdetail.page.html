@@ -37,17 +37,12 @@
 
     <div class="divback1">
         <ion-slides [options]="sliderConfig">
-            
                 <ion-slide *ngFor="let item of similararr">
-                  <ion-card style="width:100%;height:150px;">
-                    <ion-card-header>
-                      <ion-card-title> 
-                      </ion-card-title>
-                      <div class="card-title"style="padding:10px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;">{{item.p_name}}</div>
+                  <ion-card (click)="onclickpro(item)" style="width:100%;height:150px;" >
+                    <ion-card-header (click)="onclickpro(item)">
+                      <div class="card-title" (click)="onclickpro(item)" style="padding:10px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;">{{item.p_name}}</div>
                       <ion-card-content>
-                        <img src="http://localhost:3000/images/product/{{item.p_img}}" style="height:60px;width:120px;">
-                        
-                        <!-- <ion-button expand="full" (click)="oncart()">ADD to cart</ion-button> -->
+                        <img src="http://localhost:3000/images/product/{{item.p_img}}" (click)="onclickpro(item)" style="height:60px;width:120px;">         
                       </ion-card-content>
                     </ion-card-header>
                   </ion-card>

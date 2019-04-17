@@ -9,25 +9,25 @@
           <img src="http://localhost:3000/images/product/logo.jpg" alt="AVATAR">
         </span>
           <div class="example-container">
-           <mat-form-field style="width: 300px;color:#0A0906">
-           <input matInput #user_id1="ngModel"
-           [(ngModel)]="email_id"
-           name="email_id"
-            placeholder="  Enter Email_id"
-            required  style="width: 300px;">
-            <mat-error> Email is required</mat-error>
+            <mat-form-field style="width: 300px;color:#0A0906">
+            <input matInput type="email" #user_id1="ngModel"
+              [(ngModel)]="email_id"
+              name="email_id"
+              placeholder="  Enter Email_id"
+              required  style="width: 300px;">
+            <mat-error > Email is required</mat-error>
            </mat-form-field>
-         </div>
+          </div>
           <br>
           <div class="example-container">
-           <mat-form-field hintLabel="Max 8 characters" style="width: 300px;">
-             <input matInput #password1="ngModel" style="color:#0A0906;"
+          <mat-form-field hintLabel="Min 8 characters" style="width: 300px;">
+          <input matInput #password1="ngModel" style="color:#0A0906;"
              [(ngModel)]="password"
              required
              maxlength="10"
              name="password" style="border-radius: 20px;width: 300px;height: 40px;margin-top: -61px;"
-            placeholder="  Enter Password" [type]="flag ? 'password' : 'text'">
-            <mat-icon matSuffix (click)="flag=!flag">
+             placeholder="  Enter Password" [type]="flag ? 'password' : 'text'">
+             <mat-icon matSuffix (click)="flag=!flag">
                {{flag?'visibility':'visibility_off'}}
              </mat-icon>
              <mat-error>This Field is required</mat-error>
@@ -35,10 +35,11 @@
            </mat-form-field>
            </div>
         <div class="container-login100-form-btn">
-          <button [disabled]="!f.valid" (click)="onLogin()" class="login100-form-btn" style="margin-top: 40px;">
-            Login
-          </button>
-         
+
+        <button [disabled]="!f.valid" (click)="onLogin()" class="login100-form-btn" style="margin-top: 40px;">
+        Login
+        </button>
+
         </div>
         
         

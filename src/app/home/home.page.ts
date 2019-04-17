@@ -29,11 +29,21 @@ export class HomePage {
   i:number=0;
   flag:boolean=false;
   
-  constructor(private _actroute:ActivatedRoute,private _route:Router,private _proser:ProductService) { }
+  constructor(private _actroute:ActivatedRoute,private _route:Router,private _proser:ProductService,) { }
   forslider ={
     //spaceBetween:5,
     //centeredSlides:true,
     //slidesPerView:1.3
+
+    spaceBetween:5,
+    centeredSlides:true,
+    slidesPerView:0.9
+  }
+  forslider1 ={
+    spaceBetween:20,
+    centeredSlides:true,
+    slidesPerView:1.0
+
   }
   
 
@@ -62,6 +72,7 @@ slidesDidLoad1(slides1: IonSlides) {
     this._route.navigate(['/productdetail',item.p_id]);
   }  
   ngOnInit() {
+
     this._proser.getAllproduct().subscribe(
       (data:any)=>{
         this.proarr=data;

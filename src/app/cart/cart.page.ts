@@ -25,6 +25,7 @@ user_id:string;
 c_price:number;
 flag:boolean=true;
 flag1:boolean=true;
+qtyflag:boolean=false;
   constructor(private _actroute:ActivatedRoute,private _route:Router,private _cartser:AddtocartService) { }
 oncheckout(){
   this._route.navigate(['/checkout']);
@@ -44,18 +45,17 @@ onclickstart()
  onchange(item,i){
        this.total=0;
        console.log(item.c_price);
-      
+
        console.log(item.c_qty);
        this.tot[i]=item.c_price*this.qty[i];
        console.log(this.tot[i]);
        console.log(this.qty[i]);
        console.log(item)
-this._cartser.updatecart(new changeqty(this.tot[i],this.qty[i],item.c_id)).subscribe(
-  (data:any)=>{
-  }
-);
- }
- 
+       this._cartser.updatecart(new changeqty(this.tot[i],this.qty[i],item.c_id)).subscribe(
+       (data:any)=>{
+        }
+      );
+}
   ngOnInit() {
     
     this.user_id=localStorage.getItem('email_id');

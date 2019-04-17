@@ -86,6 +86,13 @@ export class CheckoutPage implements OnInit {
       await alert.present();
     }
 
+    async presentAlert2() {
+      const alert = await this.alertController.create({
+        message: 'Cart Value is Not Sufficient',
+        buttons: ['OK']
+      });
+      await alert.present();
+    }
     onclickback(){
       this._route.navigate(['product']);
     }
@@ -162,11 +169,15 @@ export class CheckoutPage implements OnInit {
         );
       }
     );
+
+    this._route.navigate(['/callback']);
     }
     onmakepayment(){
 
       //this._route.navigate['paytmpayment'];
-     window.open('http://localhost:8080/','_self');
+
+      window.open('http://localhost:8080/','_parent');
+
     }
     onclickcash(){
       this.flag=true;
@@ -179,12 +190,26 @@ export class CheckoutPage implements OnInit {
     onclickdis(){
       if(this.discount=="NEW50")
       {
+        if(this.total>100)
+        {
         this.total=this.total-50;
         console.log(this.total);
         this.btnflag=true;
         this.presentAlert();
+        }
+        else{
+          this.presentAlert2();
+        }
       }
-      else{
+      else if(this.discount=="GRAB10")
+      {
+        this.total=this.total-10;
+        console.log(this.total);
+        this.btnflag=true;
+        this.presentAlert();
+      }
+      else
+      {
         this.presentAlert1();
       }
     }
