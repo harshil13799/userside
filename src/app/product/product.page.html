@@ -15,8 +15,7 @@
    
   <!-- {{searchTerm}} -->
   <ion-searchbar value="" (ionChange)="changeditems(searchedItem)" [(ngModel)]="searchedItem" placeholder="Search Products here..."></ion-searchbar>
-  <button (click)="ongosplash()">spalsh</button>
-</ion-toolbar>
+ </ion-toolbar>
 <ion-content padding>
     <ion-list *ngFor="let item of proarr" (click)="onclickpro(item)" >
 
